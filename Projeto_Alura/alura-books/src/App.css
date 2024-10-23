@@ -1,38 +1,11 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    width: 100vw; /* Define a largura do elemento .App para ocupar 100% da largura da viewport (janela de visualização). */
+    height: 100vh; /* Define a altura do elemento .App para ocupar 100% da altura da viewport. */
+    background-image: linear-gradient(90deg, #002F52 35%, #326589); /* Aplica um fundo com um gradiente linear de 90 graus, começando com a cor #002F52 (um azul escuro) e transicionando para a cor #326589 (um azul mais claro) a 35% da largura. */
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  
+  li {
+    list-style: none; /* Remove os marcadores padrão das listas não ordenadas ou ordenadas (bullets ou números). */
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  
