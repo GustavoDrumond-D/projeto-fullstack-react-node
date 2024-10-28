@@ -1,7 +1,6 @@
 const express = require("express");
-const rotaLivros = require('./rotas/livro')
 const app = express();
-app.use(express.json())
+const rotaLivros = require('./rotas/livro')
 
 app.use('/livros', rotaLivros)
 
