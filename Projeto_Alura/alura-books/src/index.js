@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Home from './rotas/Home';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Header from './Components/Header';
+import Favoritos from './rotas/Favoritos';
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -30,14 +32,15 @@ root.render(
   <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Route path="/favoritos" element={<p>Teste</p>}/>
-        <Route path="/" element={<App />}/>
+        <Route path="/favoritos" element={<Favoritos />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<p>Página não encontrada</p>} />
       </Routes>
     </BrowserRouter>
-    <App />
   </React.StrictMode>
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

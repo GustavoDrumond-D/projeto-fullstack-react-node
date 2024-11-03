@@ -2,6 +2,7 @@ import Logo from "../Logo";
 import OpcoesHeader from "../opcoesHeader";
 import IconesHeader from "../IconesHeader";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
     background-color: #FFF; /* Define a cor de fundo do cabeçalho como branca. */
@@ -9,10 +10,10 @@ const HeaderContainer = styled.header`
     justify-content: center; /* Centraliza os itens ao longo do eixo principal (horizontal) dentro do cabeçalho. */
 `
 
-function Header(){
-    return(
+function Header() {
+    return (
         <HeaderContainer>
-            <Logo />
+            <Link to="/"><Logo /></Link>
             <OpcoesHeader />
             <IconesHeader />
         </HeaderContainer>
