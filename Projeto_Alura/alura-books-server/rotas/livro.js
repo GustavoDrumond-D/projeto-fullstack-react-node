@@ -1,31 +1,22 @@
 const {Router} = require('express');
-const {getLivros} = require('../controladores/livro')
+const {
+    getLivros,
+    getLivro,
+    postLivro,
+    patchLivro,
+    deleteLivro
+} = require('../controladores/livro')
 
 const router = Router();
 
 router.get('/', getLivros);
 
-router.post('/', (req,res) => {
-    try{
-        res.send("Requisição do tipo POST")
-    } catch (error){
-        res.status().send(error.masage)
-    }
-});
+router.get('/:id', getLivro);
 
-router.patch('/', (req,res) => {
-    try{
-        res.send("Requisição do tipo PATCH")
-    } catch (error){
-        res.status().send(error.masage)
-    }
-});
+router.post('/', postLivro);
 
-router.delete('/', (req,res) => {
-    try{
-        res.send("Requisição do tipo DELETE")
-    } catch (error){
-        res.status().send(error.masage)
-    }})
+router.patch('/:id', patchLivro);
+
+router.delete('/:id', deleteLivro);
 
 module.exports = router;

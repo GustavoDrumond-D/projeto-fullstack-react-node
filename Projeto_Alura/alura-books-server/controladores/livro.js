@@ -1,19 +1,16 @@
-const { getTodosLivros } = require('../servicos/livros')
-const { getLivroPorId } = require('../servicos/livros')
-const { postCriarLivro } = require('../servicos/livros')
-const { patchAtualizaLivro } = require('../servicos/livros')
-const { deleteLivroPorId } = require('../servicos/livros')
+const {
+    getTodosLivros,
+    getLivroPorId,
+    postCriarLivro,
+    patchAtualizaLivro,
+    deleteLivroPorId
+} = require('../servicos/livros')
 
 function getLivros(req, res) {
     try {
-
-        if(id && Number(id)) {
-            const livros = getTodosLivros()
-            res.send(livros)
-         } else {
-            res.status(422)
-            res.send("Id inválido")
-         }
+        const livros = getTodosLivros()
+        res.send(livros)
+        res.status(422).send("Id inválido")
     } catch (error) {
         res.status(500).send(error.masage)
     }
@@ -22,8 +19,13 @@ function getLivros(req, res) {
 function getLivro(req, res) {
     try {
         const id = req.params.id;
-        const livro = getLivroPorId(id)
-        res.send(livro)
+
+        if (id && Number(id)) {
+            const livro = getLivroPorId(id)
+            res.send(livro)
+        } else {
+            res.status(422).send("Id inválido")
+        }
     } catch (error) {
         res.status(500).send(error.masage)
 
@@ -31,27 +33,26 @@ function getLivro(req, res) {
 
 }
 
-function postLivro(req, res){
-    try{
+function postLivro(req, res) {
+    try {
         const livroNovo = req.body
 
-        if(req.body.nome) {
+        if (req.body.nome) {
             postCriarLivro(livroNovo)
             res.status(201).send("Livro inserido")
         } else {
-            res.status(422)
-            res.send("O campo nome é obrigatório")
+            res.status(422).send("O campo nome é obrigatório")
         }
-    } catch(error){
+    } catch (error) {
         res.status(500).send(error.masage)
     }
 }
 
-function patchLivro(req, res){
-    try{
+function patchLivro(req, res) {
+    try {
         const id = req.params.id
 
-        if(id && Number(id)) {
+        if (id && Number(id)) {
             const body = req.body
             patchAtualizaLivro(body, id)
             res.status(201).send("Livro atualizado")
@@ -59,10 +60,7 @@ function patchLivro(req, res){
             res.status(422)
             res.send("Id inválido")
         }
-
-
-
-    } catch(error){
+    } catch (error) {
         res.status(500).send(error.masage)
     }
 }
@@ -71,16 +69,14 @@ function deleteLivro(req, res) {
     try {
         const id = req.params.id
 
-        if(id && Number(id)) {
+        if (id && Number(id)) {
             deleteLivroPorId(id)
             res.status(500).send("livro deletado com sucesso")
         } else {
-            res.status(422)
-            res.send("ID inválido")
+            res.status(422).send("ID inválido")
         }
     } catch (error) {
-        res.status(500)
-        res.send(error.message)
+        res.status(500).send(error.message)
     }
 }
 
